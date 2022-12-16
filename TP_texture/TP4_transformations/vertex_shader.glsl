@@ -18,7 +18,7 @@ void main(){
         // TODO : Output position of the vertex, in clip space : MVP * position
         vec4 position = vec4(vertices_position_modelspace,1);
 
-        position.z=-texture(normalMapSampler,vertexUV).r;
+        position.z = texture(normalMapSampler,vertexUV).r;
 
         gl_Position = position * mvp;
 
