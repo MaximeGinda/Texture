@@ -112,13 +112,8 @@ void loadNormalMap(std::vector<float> uv, char* texture_name, GLuint programID){
     glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
     glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
 
-
-    GLuint texture = loadBMP_custom(texture_name);
-    GLuint textureID = glGetUniformLocation(programID,"normalMapSampler");
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glUniform1i(textureID, 0);
+    GLuint heightmap = loadBMP_custom(texture_name);
+    GLuint heightmapID = glGetUniformLocation(programID,"normalMapSampler");
 }
 
 int main( void )
@@ -261,6 +256,7 @@ int main( void )
         mat4 projection = glm::perspective<float>(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.f);
 
         model = translate(model, vec3(-1.,-1.,0.));
+        model = rotate(model,glm::radians(45.0f),vec3(1.,0.,0.));
 
         mat4 mvp =  projection * view * model;
 
