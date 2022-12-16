@@ -83,7 +83,7 @@ void createPlan(std::vector<unsigned short>& indices, std::vector<std::vector<un
     }
 }
 
-void loadTexture2D(std::vector<float> uv, char* texture_name, GLuint programID){
+void loadUV(std::vector<float> uv, GLuint programID){
     GLuint uvbuffer;
     glGenBuffers(1,&uvbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
@@ -92,8 +92,9 @@ void loadTexture2D(std::vector<float> uv, char* texture_name, GLuint programID){
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
     glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
+}
 
-
+void loadTexture2D(char* texture_name, GLuint programID){
     GLuint texture = loadBMP_custom(texture_name);
     GLuint textureID = glGetUniformLocation(programID,"textureSampler");
 
@@ -102,16 +103,7 @@ void loadTexture2D(std::vector<float> uv, char* texture_name, GLuint programID){
     glUniform1i(textureID, 0);
 }
 
-void loadNormalMap(std::vector<float> uv, char* texture_name, GLuint programID){
-    GLuint uvbuffer;
-    glGenBuffers(1,&uvbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
-    glBufferData(GL_ARRAY_BUFFER,uv.size()*sizeof(float),&uv[0],GL_STATIC_DRAW);
-
-    glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
-    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
-
+void loadNormalMap(char* texture_name, GLuint programID){
     GLuint heightmap = loadBMP_custom(texture_name);
     GLuint heightmapID = glGetUniformLocation(programID,"normalMapSampler");
 }
@@ -190,8 +182,9 @@ int main( void )
     float step = 2. / 10.;
 
     createPlan(indices, triangles, indexed_vertices, uv, step);
-    loadTexture2D(uv, "puech.bmp", programID);
-    loadNormalMap(uv, "Heightmap_Mountain.bmp", programID);
+    loadUV(uv);
+    loadTexture2D( "puech.bmp", programID);
+    loadNormalMap( "Heightmap_Mountain.bmp", programID);
     //Chargement du fichier de maillage
     // std::string filename("sphere.off");
     // loadOFF(filename, indexed_vertices, indices, triangles );
@@ -256,7 +249,7 @@ int main( void )
         mat4 projection = glm::perspective<float>(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.f);
 
         model = translate(model, vec3(-1.,-1.,0.));
-        model = rotate(model,glm::radians(45.0f),vec3(1.,0.,0.));
+        model = rotate(model,glm::radians(-45.0f),vec3(1.,0.,0.));
 
         mat4 mvp =  projection * view * model;
 
