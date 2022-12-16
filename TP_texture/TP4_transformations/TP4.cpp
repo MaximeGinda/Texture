@@ -196,7 +196,7 @@ int main( void )
 
     createPlan(indices, triangles, indexed_vertices, uv, step);
     loadTexture2D(uv, "puech.bmp", programID);
-    loadNormalMap(uv, "Heightmap_Mountain.bmp");
+    loadNormalMap(uv, "Heightmap_Mountain.bmp", programID);
     //Chargement du fichier de maillage
     // std::string filename("sphere.off");
     // loadOFF(filename, indexed_vertices, indices, triangles );
