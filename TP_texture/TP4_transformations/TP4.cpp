@@ -254,7 +254,7 @@ int main( void )
         mat4 projection = glm::perspective<float>(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.f);
 
         model = translate(model, vec3(-1.,-1.,0.));
-        //model = rotate(model,glm::radians(90.0f),vec3(1.,0.,0.));
+        model = rotate(model,glm::radians(90.0f),vec3(1.,0.,0.));
 
         mat4 mvp =  projection * view * model;
 
