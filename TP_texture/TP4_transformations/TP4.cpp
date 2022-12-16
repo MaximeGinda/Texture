@@ -106,6 +106,10 @@ void loadTexture2D(char* texture_name, GLuint programID){
 void loadNormalMap(char* texture_name, GLuint programID){
     GLuint heightmap = loadBMP_custom(texture_name);
     GLuint heightmapID = glGetUniformLocation(programID,"normalMapSampler");
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,heightmap);
+    glUniform1i(heightmapID,1);
 }
 
 int main( void )
