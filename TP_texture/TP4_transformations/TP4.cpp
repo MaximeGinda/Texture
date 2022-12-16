@@ -182,7 +182,7 @@ int main( void )
     float step = 2. / 10.;
 
     createPlan(indices, triangles, indexed_vertices, uv, step);
-    loadUV(uv);
+    loadUV(uv, programID);
     loadTexture2D( "puech.bmp", programID);
     loadNormalMap( "Heightmap_Mountain.bmp", programID);
     //Chargement du fichier de maillage
