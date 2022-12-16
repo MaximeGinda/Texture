@@ -11,10 +11,14 @@ uniform mat4 mvp;
 
 out vec2 UV;
 
+uniform sampler2D normalMapSampler;
+
 void main(){
 
         // TODO : Output position of the vertex, in clip space : MVP * position
         gl_Position = mvp * vec4(vertices_position_modelspace,1);
+
+        gl_Position.z=-texture(normalMapSampler,vertexUV).r;
 
         UV = vertexUV;
 }

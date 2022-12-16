@@ -102,6 +102,25 @@ void loadTexture2D(std::vector<float> uv, char* texture_name, GLuint programID){
     glUniform1i(textureID, 0);
 }
 
+void loadNormalMap(std::vector<float> uv, char* texture_name, GLuint programID){
+    GLuint uvbuffer;
+    glGenBuffers(1,&uvbuffer);
+    glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
+    glBufferData(GL_ARRAY_BUFFER,uv.size()*sizeof(float),&uv[0],GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(1);
+    glBindBuffer(GL_ARRAY_BUFFER,uvbuffer);
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
+
+
+    GLuint texture = loadBMP_custom(texture_name);
+    GLuint textureID = glGetUniformLocation(programID,"normalMapSampler");
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glUniform1i(textureID, 0);
+}
+
 int main( void )
 {
     // Initialise GLFW
@@ -177,13 +196,12 @@ int main( void )
 
     createPlan(indices, triangles, indexed_vertices, uv, step);
     loadTexture2D(uv, "puech.bmp", programID);
-
+    loadNormalMap(uv, "Heightmap_Mountain.bmp");
     //Chargement du fichier de maillage
     // std::string filename("sphere.off");
     // loadOFF(filename, indexed_vertices, indices, triangles );
 
     // Load it into a VBO
-
     GLuint vertexbuffer;
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
