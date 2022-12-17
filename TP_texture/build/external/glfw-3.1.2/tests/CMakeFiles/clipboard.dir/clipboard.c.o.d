@@ -1,9 +1,9 @@
 external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/clipboard.c.o: \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/tests/clipboard.c \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/tests/clipboard.c \
  /usr/include/stdc-predef.h \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/include/GLFW/glfw3.h \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h /usr/include/GL/gl.h \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/deps/GL/glext.h \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/deps/GL/glext.h \
  /usr/include/inttypes.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -54,4 +54,4 @@ external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/clipboard.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/deps/getopt.h
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/deps/getopt.h

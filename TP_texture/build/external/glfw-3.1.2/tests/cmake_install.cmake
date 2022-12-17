@@ -1,4 +1,4 @@
-# Install script for directory: /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/tests
+# Install script for directory: /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

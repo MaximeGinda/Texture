@@ -1,7 +1,7 @@
 external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/__/deps/getopt.c.o: \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/deps/getopt.c \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/deps/getopt.c \
  /usr/include/stdc-predef.h \
- /home/e20210010747/Bureau/TP_texture/external/glfw-3.1.2/deps/getopt.h \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glfw-3.1.2/deps/getopt.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

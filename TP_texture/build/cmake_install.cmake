@@ -1,4 +1,4 @@
-# Install script for directory: /home/e20210010747/Bureau/TP_texture
+# Install script for directory: /home/max/Documents/GitHub/Texture/TP_texture
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/e20210010747/Bureau/TP_texture/build/external/cmake_install.cmake")
+  include("/home/max/Documents/GitHub/Texture/TP_texture/build/external/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/e20210010747/Bureau/TP_texture/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/max/Documents/GitHub/Texture/TP_texture/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
