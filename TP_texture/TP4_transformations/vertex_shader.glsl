@@ -8,6 +8,7 @@ uniform mat4 mvp;
 uniform sampler2D heightMapSampler;
 
 out vec2 UV;
+out vec3 FragPos;
 
 void main(){
 
@@ -16,5 +17,7 @@ void main(){
         gl_Position = mvp * position;
 
         UV = vertexUV;
-}
+        FragPos =  vertices_position_modelspace;
+}       
+
 
