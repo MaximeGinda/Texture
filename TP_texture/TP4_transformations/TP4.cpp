@@ -95,6 +95,15 @@ void createPlan(std::vector<unsigned short>& indices, std::vector<std::vector<un
     }
 }
 
+// Calcul du barycentre
+vec3 calculBarycentre(std::vector<glm::vec3>& indexed_vertices){
+		vec3 barycentre = vec3(0.0f);
+		for(int i=0; i < indexed_vertices.size(); i++)
+			barycentre += indexed_vertices[i];
+		
+		return barycentre /= (float) indexed_vertices.size();
+}
+
 // Calcul des uv d'une sphère
 void calculUVSphere(std::vector<glm::vec3>& indexed_vertices, std::vector<float>& uv){
     uv.clear();
@@ -106,15 +115,6 @@ void calculUVSphere(std::vector<glm::vec3>& indexed_vertices, std::vector<float>
         uv.push_back(v);
     }
 }
-
-// Calcul du barycentre
-vec3 calculBarycentre(std::vector<glm::vec3>& indexed_vertices){
-		vec3 barycentre = vec3(0.0f);
-		for(int i=0; i < indexed_vertices.size(); i++)
-			barycentre += indexed_vertices[i];
-		
-		return barycentre /= (float) indexed_vertices.size();
-	}
 
 void loadUV(std::vector<float> uv, GLuint programID){
     GLuint uvbuffer;
