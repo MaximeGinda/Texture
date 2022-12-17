@@ -213,8 +213,8 @@ int main( void )
 
     // Initialisation de la lumière
     light.setLight();
-    glUniform3fv(glGetUniformLocation(programID, "lightPosition"), 1, light.position[0]); 
-    glUniform3fv(glGetUniformLocation(programID, "lightColor"), 1, light.color[0]);
+    glUniform3fv(glGetUniformLocation(programID, "lightPosition"), 1, (GLfloat*) light.position[0]); 
+    glUniform3fv(glGetUniformLocation(programID, "lightColor"), 1, (GLfloat*) light.color[0]);
     glUniform3f(glGetUniformLocation(programID, "viewPos"), camera_position.x, camera_position.y, camera_position.z);
     //Chargement du fichier de maillage
     // std::string filename("sphere.off");
