@@ -234,7 +234,7 @@ int main( void )
 
     // createPlan(indices, triangles, indexed_vertices, uv, step);
     loadUV(uv, programID);
-    //loadNormalMap( "normal.bmp", programID);
+    loadNormalMap( "normal.bmp", programID);
     loadTexture2D( "puech.bmp", programID);
 
     // Initialisation de la lumière
