@@ -98,14 +98,23 @@ void createPlan(std::vector<unsigned short>& indices, std::vector<std::vector<un
 // Calcul des uv d'une sphère
 void calculUVSphere(std::vector<glm::vec3>& indexed_vertices, std::vector<float>& uv){
     uv.clear();
-    for(unsigned int i=0;i<indexed_vertices.size();i++){
-        vec3 n= normalize(indexed_vertices[i]-barycentre);
-        float u = std::atan2(n[0],n[2])/(float)(2*M_PI)+0.5;
-        float v = n[1]*0.5+0.5;
+    for(unsigned int i = 0; i < indexed_vertices.size(); i++){
+        vec3 n = normalize(indexed_vertices[i] - calculBarycentre(indexed_vertices));
+        float u = std::atan2(n[0],n[2]) / (float)(2 * M_PI) + 0.5;
+        float v = n[1] * 0.5 + 0.5;
         uv.push_back(u);
         uv.push_back(v);
     }
 }
+
+// Calcul du barycentre
+vec3 calculBarycentre(std::vector<glm::vec3>& indexed_vertices){
+		vec3 barycentre = vec3(0.0f);
+		for(int i=0; i < indexed_vertices.size(); i++)
+			barycentre += indexed_vertices[i];
+		
+		return barycentre /= (float) indexed_vertices.size();
+	}
 
 void loadUV(std::vector<float> uv, GLuint programID){
     GLuint uvbuffer;
@@ -226,7 +235,7 @@ int main( void )
     // createPlan(indices, triangles, indexed_vertices, uv, step);
     loadUV(uv, programID);
     //loadNormalMap( "normal.bmp", programID);
-     loadTexture2D( "puech.bmp", programID);
+    loadTexture2D( "puech.bmp", programID);
 
     // Initialisation de la lumière
     light.setLight();
