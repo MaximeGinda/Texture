@@ -95,6 +95,18 @@ void createPlan(std::vector<unsigned short>& indices, std::vector<std::vector<un
     }
 }
 
+// Calcul des uv d'une sphère
+void calculUVSphere(std::vector<glm::vec3>& indexed_vertices, std::vector<float>& uv){
+    uv.clear();
+    for(unsigned int i=0;i<indexed_vertices.size();i++){
+        vec3 n= normalize(indexed_vertices[i]-barycentre);
+        float u = std::atan2(n[0],n[2])/(float)(2*M_PI)+0.5;
+        float v = n[1]*0.5+0.5;
+        uv.push_back(u);
+        uv.push_back(v);
+    }
+}
+
 void loadUV(std::vector<float> uv, GLuint programID){
     GLuint uvbuffer;
     glGenBuffers(1,&uvbuffer);
@@ -206,19 +218,22 @@ int main( void )
 
     float step = 2. / 10.;
 
-    createPlan(indices, triangles, indexed_vertices, uv, step);
+    //Chargement du fichier de maillage
+    std::string filename("sphere.off");
+    loadOFF(filename, indexed_vertices, indices, triangles );
+    calculUVSphere(indexed_vertices, uv);
+
+    // createPlan(indices, triangles, indexed_vertices, uv, step);
     loadUV(uv, programID);
-    loadNormalMap( "normal.bmp", programID);
-    // loadTexture2D( "puech.bmp", programID);
+    //loadNormalMap( "normal.bmp", programID);
+     loadTexture2D( "puech.bmp", programID);
 
     // Initialisation de la lumière
     light.setLight();
     glUniform3fv(glGetUniformLocation(programID, "lightPosition"), 1, &light.position[0]); 
     glUniform3fv(glGetUniformLocation(programID, "lightColor"), 1, &light.color[0]);
     glUniform3f(glGetUniformLocation(programID, "viewPos"), camera_position.x, camera_position.y, camera_position.z);
-    //Chargement du fichier de maillage
-    // std::string filename("sphere.off");
-    // loadOFF(filename, indexed_vertices, indices, triangles );
+    
 
     // Load it into a VBO
     GLuint vertexbuffer;
