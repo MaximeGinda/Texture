@@ -19,7 +19,7 @@ vec3 ambient = vec3(1,0,0);
 
 void main(){
 
-        vec3 objColor = vec3(1,0,0); //texture(textureSampler,UV).rgb;
+        //vec3 objColor = vec3(,0,0); //texture(textureSampler,UV).rgb;
 
         vec3 normal = 2 * texture(normalMapSampler, UV).xyz  - 1.0;
 
@@ -32,5 +32,5 @@ void main(){
         float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), shininess);
         vec3 specular = spec * lightColor;
 
-        color = (ambient + diffuse + specular) * objColor;
+        color = (ambient + diffuse + specular);
 }
