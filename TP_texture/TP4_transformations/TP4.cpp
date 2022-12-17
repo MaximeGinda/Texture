@@ -48,6 +48,18 @@ float zoom = 1.;
 //Model updated
 mat4 newMod = mat4(1.f);
 
+// Our light
+struct Light {
+    vec3 position;
+    vec3 color;
+
+    void setLight(){
+        color = vec3 (300, 300, 300);
+    }
+}; 
+
+Light light;
+
 /*******************************************************************************/
 
 void createPlan(std::vector<unsigned short>& indices, std::vector<std::vector<unsigned short>>& triangles, std::vector<glm::vec3>& indexed_vertices, std::vector<float>& uv, float step){
@@ -103,13 +115,22 @@ void loadTexture2D(char* texture_name, GLuint programID){
     glUniform1i(textureID, 0);
 }
 
-void loadNormalMap(char* texture_name, GLuint programID){
+void loadHeightMap(char* texture_name, GLuint programID){
     GLuint heightmap = loadBMP_custom(texture_name);
-    GLuint heightmapID = glGetUniformLocation(programID,"normalMapSampler");
+    GLuint heightmapID = glGetUniformLocation(programID,"heightMapSampler");
 
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D,heightmap);
     glUniform1i(heightmapID,1);
+}
+
+void loadNormalMap(char* texture_name, GLuint programID){
+    GLuint normalMap = loadBMP_custom(texture_name);
+    GLuint normalMapID = glGetUniformLocation(programID,"NormalMapSampler");
+
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D,normalMap);
+    glUniform1i(normalMapID,1);
 }
 
 int main( void )
@@ -187,9 +208,14 @@ int main( void )
 
     createPlan(indices, triangles, indexed_vertices, uv, step);
     loadUV(uv, programID);
-    loadNormalMap( "Heightmap_Mountain.bmp", programID);
-    loadTexture2D( "puech.bmp", programID);
-    
+    loadNormalMap( "normalMap.bmp", programID);
+    // loadTexture2D( "puech.bmp", programID);
+
+    // Initialisation de la lumière
+    light.setLight();
+    glUniform3fv(glGetUniformLocation(programID, "lightPosition"), 1, light.position); 
+    glUniform3fv(glGetUniformLocation(programID, "lightColor"), 1, light.color);
+    glUniform3f(glGetUniformLocation(shaderProgram, "viewPos"), camera_position.x, camera_position.y, camera_position.z);
     //Chargement du fichier de maillage
     // std::string filename("sphere.off");
     // loadOFF(filename, indexed_vertices, indices, triangles );

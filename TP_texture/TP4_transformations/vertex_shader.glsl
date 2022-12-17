@@ -4,22 +4,15 @@
 layout(location = 0) in vec3 vertices_position_modelspace;
 layout(location = 1) in vec2 vertexUV;
 
-//TODO create uniform transformations matrices Model View Projection
-// Values that stay constant for the whole mesh.
-
 uniform mat4 mvp;
+uniform sampler2D heightMapSampler;
 
 out vec2 UV;
 
-uniform sampler2D normalMapSampler;
-
 void main(){
 
-        // TODO : Output position of the vertex, in clip space : MVP * position
         vec4 position = vec4(vertices_position_modelspace,1);
-
-        position.z = texture(normalMapSampler,vertexUV).r;
-
+        position.z = texture(heightMapSampler,vertexUV).r;
         gl_Position = mvp * position;
 
         UV = vertexUV;
