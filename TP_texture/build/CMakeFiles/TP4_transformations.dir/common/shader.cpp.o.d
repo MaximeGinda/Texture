@@ -1,5 +1,5 @@
 CMakeFiles/TP4_transformations.dir/common/shader.cpp.o: \
- /home/e20210010747/Bureau/TP_texture/common/shader.cpp \
+ /home/max/Documents/GitHub/Texture/TP_texture/common/shader.cpp \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -179,6 +179,6 @@ CMakeFiles/TP4_transformations.dir/common/shader.cpp.o: \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/stdlib.h \
  /usr/include/string.h /usr/include/strings.h \
- /home/e20210010747/Bureau/TP_texture/external/glew-1.13.0/include/GL/glew.h \
+ /home/max/Documents/GitHub/Texture/TP_texture/external/glew-1.13.0/include/GL/glew.h \
  /usr/include/GL/glu.h /usr/include/GL/gl.h \
- /home/e20210010747/Bureau/TP_texture/common/shader.hpp
+ /home/max/Documents/GitHub/Texture/TP_texture/common/shader.hpp

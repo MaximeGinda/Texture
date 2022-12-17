@@ -1,4 +1,4 @@
-# Install script for directory: /home/e20210010747/Bureau/TP_texture/external
+# Install script for directory: /home/max/Documents/GitHub/Texture/TP_texture/external
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/e20210010747/Bureau/TP_texture/build/external/glfw-3.1.2/cmake_install.cmake")
+  include("/home/max/Documents/GitHub/Texture/TP_texture/build/external/glfw-3.1.2/cmake_install.cmake")
 
 endif()
 
