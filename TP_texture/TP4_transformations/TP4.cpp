@@ -303,7 +303,7 @@ int main( void )
         mat4 view = glm::lookAt(camera_position, camera_position + camera_target, camera_up);
         mat4 projection = glm::perspective<float>(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.f);
 
-        model = rotate(model, glm::radians(130.0f), vec3(1.,0.,0.));
+        // model = rotate(model, glm::radians(130.0f), vec3(1.,0.,0.));
         model = translate(model, vec3(-1.,-1.,0.));
 
         mat4 mvp =  projection * view * model;
