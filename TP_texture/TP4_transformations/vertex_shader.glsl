@@ -12,7 +12,7 @@ out vec2 UV;
 void main(){
 
         vec4 position = vec4(vertices_position_modelspace,1);
-        position.z = texture(heightMapSampler,vertexUV).r;
+        //position.z = texture(heightMapSampler,vertexUV).r;
         gl_Position = mvp * position;
 
         UV = vertexUV;

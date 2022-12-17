@@ -16,7 +16,7 @@ uniform vec3 viewPos;
 
 void main(){
 
-        vec3 objColor = texture(textureSampler,UV).rgb;
+        vec3 objColor = vec3(1,0,0); //texture(textureSampler,UV).rgb;
 
         vec3 normal = 2 * texture(normalMap, UV).xyz  - 1.0;
 
