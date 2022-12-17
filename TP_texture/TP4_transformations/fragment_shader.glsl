@@ -33,5 +33,5 @@ void main(){
         float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), shininess);
         vec3 specular = spec * lightColor;
 
-        color = (ambient + diffuse + specular);
+        color = (ambient + diffuse + specular)* objColor;
 }
